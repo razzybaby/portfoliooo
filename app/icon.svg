@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Blueprint sheet: navy drafting grid, cyan "RS" and corner crop marks -->
+  <rect width="64" height="64" rx="10" fill="#0a1626"/>
+  <path d="M16 0V64M32 0V64M48 0V64M0 16H64M0 32H64M0 48H64" stroke="#5cd0ff" stroke-opacity=".15" stroke-width="1"/>
+  <path d="M8 16V8H16M48 8H56V16M56 48V56H48M16 56H8V48" fill="none" stroke="#5cd0ff" stroke-width="2.5"/>
+  <text x="32" y="40" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="22" font-weight="700" fill="#5cd0ff">RS</text>
+</svg>

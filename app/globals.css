@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Light = white drafting paper, Dark = classic blueprint navy */
+:root {
+  --bg: #f2f6fb;
+  --fg: #0d2340;
+  --muted: #4f6683;
+  --panel: #ffffff;
+  --line: rgb(13 35 64 / 0.16);
+  --grid: rgb(20 80 160 / 0.09);
+  --grid-fine: rgb(20 80 160 / 0.035);
+  --accent: #0b5fd6;
+  --mark: #c46a00;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0a1626;
+  --fg: #dbe8f5;
+  --muted: #8199b4;
+  --panel: #0f1f35;
+  --line: rgb(120 170 230 / 0.2);
+  --grid: rgb(110 160 220 / 0.1);
+  --grid-fine: rgb(110 160 220 / 0.04);
+  --accent: #5cd0ff;
+  --mark: #ffb547;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-mark: var(--mark);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: clip;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+/* Two-level drafting grid: 80px major lines, 16px minor lines */
+.blueprint-grid {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    linear-gradient(var(--grid-fine) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-fine) 1px, transparent 1px);
+  background-size:
+    80px 80px,
+    80px 80px,
+    16px 16px,
+    16px 16px;
+}
+
+/* Corner registration marks around a box */
+.crop-marks {
+  position: relative;
+}
+.crop-marks::before,
+.crop-marks::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--accent);
+  pointer-events: none;
+}
+.crop-marks::before {
+  top: -6px;
+  left: -6px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+.crop-marks::after {
+  bottom: -6px;
+  right: -6px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
